@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Tool - Otomatis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="icon">🚀</div>
+            <h1>Deploy Tool</h1>
+            <p>Upload file → Auto Deploy ke Vercel → Dapat URL</p>
+            <span class="badge">⚡ FULL OTOMATIS • VERCEL API</span>
+        </div>
+
+        <!-- Step 1: Input -->
+        <div class="card">
+            <h2><span class="step">1</span> Masukkan Kode Website</h2>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="upload">📁 Upload File</button>
+                <button class="tab-btn" data-tab="code">📝 Tulis Kode</button>
+            </div>
+
+            <!-- Tab Upload -->
+            <div class="tab-content active" id="tab-upload">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="icon">📤</div>
+                    <p><span class="browse">Tap untuk pilih file</span> atau drag & drop</p>
+                    <p class="hint">HTML, CSS, JS — multiple file | Maks 100 MB</p>
+                </div>
+                <input type="file" id="fileInput" multiple accept=".html,.css,.js,.htm,.txt,.md,.json,.xml,.svg">
+                <div class="file-list" id="fileList"></div>
+            </div>
+
+            <!-- Tab Tulis Kode -->
+            <div class="tab-content" id="tab-code">
+                <div class="editor-label">📄 index.html</div>
+                <textarea class="code-editor" id="htmlEditor" placeholder="<h1>Hello World</h1>"></textarea>
+
+                <div class="editor-label">🎨 style.css (opsional)</div>
+                <textarea class="code-editor" id="cssEditor" placeholder="body { background: #f0f0f0; }"></textarea>
+
+                <div class="editor-label">⚡ script.js (opsional)</div>
+                <textarea class="code-editor" id="jsEditor" placeholder="console.log('Hello!');"></textarea>
+
+                <button class="btn btn-outline" id="btnUseCode">➕ Gunakan Kode Ini</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Project Name -->
+        <div class="card">
+            <h2><span class="step">2</span> Nama Project</h2>
+            <div class="form-group">
+                <label>📝 Nama Project</label>
+                <input type="text" id="projectName" placeholder="my-awesome-project" value="">
+                <span class="hint">Hanya huruf, angka, dan strip (-)</span>
+            </div>
+            <div class="form-group">
+                <label>🔗 API Endpoint</label>
+                <input type="text" id="apiEndpoint" placeholder="https://deploy-tool.vercel.app/api/deploy" value="">
+                <span class="hint">URL backend deploy (isi setelah deploy backend)</span>
+            </div>
+        </div>
+
+        <!-- Step 3: Preview -->
+        <div class="card">
+            <h2><span class="step">3</span> Preview</h2>
+            <iframe class="preview-frame" id="previewFrame" srcdoc="<html><body style='display:flex;align-items:center;justify-content:center;height:100%;background:#f5f5f5;color:#999;font-family:sans-serif;'><p>👆 Masukkan kode dulu</p></body></html>"></iframe>
+            <button class="btn btn-outline" id="btnPreview">👁️ Refresh Preview</button>
+        </div>
+
+        <!-- Step 4: Deploy -->
+        <div class="card">
+            <h2><span class="step">4</span> Deploy Otomatis</h2>
+            <p class="deploy-info">Klik tombol di bawah, file akan <span>otomatis dideploy</span> ke Vercel!</p>
+            <button class="btn btn-deploy" id="btnDeploy">⚡ Deploy ke Vercel</button>
+
+            <!-- Progress -->
+            <div class="progress" id="progress">
+                <span class="spinner"></span> <span id="progressText">Mempersiapkan deploy...</span>
+                <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+            </div>
+
+            <!-- Error -->
+            <div class="error-msg" id="errorMsg"></div>
+
+            <!-- Result -->
+            <div class="result" id="result">
+                <div class="success-icon">✅</div>
+                <span class="label">Deploy Berhasil!</span>
+                <div class="url" id="resultUrl"></div>
+                <div class="stats" id="statsContainer"></div>
+                <div class="btn-group">
+                    <button class="btn-copy" id="btnCopy">📋 Copy URL</button>
+                    <a class="btn-open" id="btnOpen" href="#" target="_blank">🌐 Buka Website</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credit -->
+        <div class="credit">
+            Created by <span>Ryzen</span>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">✅ Berhasil!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
