@@ -1,0 +1,11 @@
+{
+  "name": "deploy-tool",
+  "version": "3.0.0",
+  "description": "Deploy Tool Otomatis - Upload & Deploy ke Vercel via API",
+  "scripts": {
+    "start": "node api/deploy.js"
+  },
+  "dependencies": {
+    "formidable": "^3.5.1"
+  }
+}
