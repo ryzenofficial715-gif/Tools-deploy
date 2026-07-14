@@ -5,7 +5,7 @@ import fs from 'fs';
 // ============================================
 // Environment Variables
 // ============================================
-const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
+const VERCEL_TOKEN = process.env.DEPLOY_TOKEN;
 const VERCEL_TEAM_ID = process.env.VERCEL_TEAM_ID || '';
 const API_SECRET_KEY = process.env.API_SECRET_KEY || 'default-secret-change-me';
 
